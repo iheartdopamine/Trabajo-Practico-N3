@@ -22,3 +22,26 @@ function clasificarIMC(imc) {
     return "Obesidad";
   }
 }
+
+function renderizarTabla() {
+  cuerpoTabla.innerHTML = "";
+
+  for (let i = 0; i < personas.length; i++) {
+    const persona = personas[i];
+    const imc = calcularIMC(persona.peso, persona.altura);
+    const categoria = clasificarIMC(imc);
+
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${persona.nombre}</td>
+      <td>${persona.apellido}</td>
+      <td>${persona.edad}</td>
+      <td>${persona.altura}</td>
+      <td>${persona.peso}</td>
+      <td>${imc} (${categoria})</td>
+      <td><button class="btn-quitar" data-id="${persona.id}">Quitar</button></td>
+    `;
+
+    cuerpoTabla.appendChild(fila);
+  }
+}
