@@ -116,3 +116,4 @@ cuerpoTabla.addEventListener("click", function (evento) {
     renderizarTabla();
   }
 });
+
