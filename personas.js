@@ -45,3 +45,37 @@ function renderizarTabla() {
     cuerpoTabla.appendChild(fila);
   }
 }
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault(); // evita que la página se recargue
+
+  const nombre = document.getElementById("nombre").value.trim();
+  const apellido = document.getElementById("apellido").value.trim();
+  const edad = parseInt(document.getElementById("edad").value, 10);
+  const altura = parseFloat(document.getElementById("altura").value);
+  const peso = parseFloat(document.getElementById("peso").value);
+
+  if (isNaN(edad) || isNaN(altura) || isNaN(peso)) {
+    alert("Por favor completá todos los campos con valores válidos.");
+    return;
+  }
+
+  contadorId++;
+  const nuevaPersona = { id: contadorId, nombre, apellido, edad, altura, peso };
+
+  personas.push(nuevaPersona);
+  renderizarTabla();
+  formulario.reset();
+});
+
+cuerpoTabla.addEventListener("click", function (evento) {
+  if (evento.target.classList.contains("btn-quitar")) {
+    const idAQuitar = parseInt(evento.target.getAttribute("data-id"), 10);
+
+    personas = personas.filter(function (persona) {
+      return persona.id !== idAQuitar;
+    });
+
+    renderizarTabla();
+  }
+});
