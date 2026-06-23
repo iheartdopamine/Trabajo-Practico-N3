@@ -36,3 +36,60 @@ nav a {
   border: 1px solid white;
   border-radius: 4px;
 }
+
+/* Contenido principal: ancho maximo y separacion */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+/* Botones de control (ordenar, resaltar, restablecer) */
+.controles-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.controles-flex button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.controles-flex button:hover {
+  background-color: #1a252f;
+}
+
+/* Contenedor de tarjetas distribuido con Flexbox */
+.tarjetas-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Cada tarjeta crece y se envuelve segun el espacio disponible */
+.tarjeta-flex {
+  flex: 1 1 220px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-flex h3 {
+  margin-top: 0;
+}
+
+/* Tarjetas resaltadas como favoritas */
+.tarjeta-destacada {
+  border-color: #f1c40f;
+  box-shadow: 0 0 0 2px #f1c40f inset;
+  background-color: #fffbe6;
+}
