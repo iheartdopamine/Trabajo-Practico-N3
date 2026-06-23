@@ -38,3 +38,23 @@ function renderizarTarjetas(arreglo) {
     contenedor.appendChild(tarjeta);
   }
 }
+
+// Ordenar alfabéticamente
+document.getElementById("btn-ordenar").addEventListener("click", function () {
+  const copiaOrdenada = [...lenguajes].sort((a, b) => a.nombre.localeCompare(b.nombre));
+  renderizarTarjetas(copiaOrdenada);
+});
+
+// Alternar resaltado de favoritos
+document.getElementById("btn-resaltar").addEventListener("click", function () {
+  resaltarActivo = !resaltarActivo;
+  renderizarTarjetas(lenguajes);
+});
+
+// Restablecer todo
+document.getElementById("btn-reset").addEventListener("click", function () {
+  resaltarActivo = false;
+  renderizarTarjetas(ordenOriginal);
+});
+
+renderizarTarjetas(lenguajes);
