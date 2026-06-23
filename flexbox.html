@@ -1,14 +1,18 @@
+<!-- Documento HTML5 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Configuracion basica del documento -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejercicio 1: Flexbox</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Encabezado con titulo y menu de navegacion -->
   <header>
     <h1>Ejercicio 1: Flexbox</h1>
+    <!-- Menu de navegacion -->
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -18,18 +22,23 @@
       </ul>
     </nav>
   </header>
+
+  <!-- Contenido principal de la pagina -->
   <main>
-  <p>Las siguientes tarjetas se generan dinámicamente desde un arreglo de JavaScript y se distribuyen utilizando Flexbox.</p>
 
-  <div class="controles-flex">
-    <button id="btn-ordenar">Ordenar por nombre</button>
-    <button id="btn-resaltar">Resaltar favoritos</button>
-    <button id="btn-reset">Restablecer orden</button>
-  </div>
 
-  <div class="tarjetas-flex" id="contenedor-tarjetas"></div>
+    <!-- Botones de interaccion -->
+    <div class="controles-flex">
+      <button id="btn-ordenar">Ordenar por nombre</button>
+      <button id="btn-resaltar">Resaltar favoritos</button>
+      <button id="btn-reset">Restablecer orden</button>
+    </div>
 
-</main>
-<script src="flexbox.js"></script>
+    <!-- Contenedor vacio -->
+    <div class="tarjetas-flex" id="contenedor-tarjetas"></div>
+  </main>
+
+  <!-- Script externo -->
+  <script src="flexbox.js"></script>
 </body>
 </html>
