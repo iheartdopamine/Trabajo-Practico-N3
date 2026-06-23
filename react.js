@@ -176,7 +176,7 @@ function App() {
   // Arreglo de personas
   const [personas, setPersonas] = useState([]);
  
-  // Contador para asignar un id unico a cada persona (igual que con contadorId en personas.js)
+  // Contador para asignar un id unico a cada persona
   const [contadorId, setContadorId] = useState(0);
  
   // Funcion que agrega una nueva persona al estado
