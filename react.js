@@ -16,7 +16,7 @@ function clasificarIMC(imc) {
   else return "Obesidad";
 }
 
-//Formulario
+// Componente para el formulario de ingreso de personas
 function FormularioPersona({ onAgregar }) {
   // Cada campo del formulario se maneja con su propio estado
   const [nombre, setNombre] = useState("");
@@ -58,7 +58,7 @@ function FormularioPersona({ onAgregar }) {
     setPeso("");
   }
 
-  //Formulario completo en JSX
+  // Renderizado del formulario
   return (
     <form className="form-personas" onSubmit={manejarEnvio}>
 
@@ -129,3 +129,78 @@ function FormularioPersona({ onAgregar }) {
     </form>
   );
 }
+
+// Componente para mostrar la tabla de personas
+function TablaPersonas({ personas, onQuitar }) {
+  return (
+    <table className="tabla-personas">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Altura (m)</th>
+          <th>Peso (kg)</th>
+          <th>IMC</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        {personas.map((persona) => {
+          const imc = calcularIMC(persona.peso, persona.altura);
+          const categoria = clasificarIMC(imc);
+ 
+          return (
+            <tr key={persona.id}>
+              <td>{persona.nombre}</td>
+              <td>{persona.apellido}</td>
+              <td>{persona.edad}</td>
+              <td>{persona.altura}</td>
+              <td>{persona.peso}</td>
+              <td>{imc} ({categoria})</td>
+              <td>
+                <button className="btn-quitar" onClick={() => onQuitar(persona.id)}>
+                  Quitar
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+}
+
+// Componente principal de la aplicacion
+function App() {
+  // Arreglo de personas
+  const [personas, setPersonas] = useState([]);
+ 
+  // Contador para asignar un id unico a cada persona (igual que con contadorId en personas.js)
+  const [contadorId, setContadorId] = useState(0);
+ 
+  // Funcion que agrega una nueva persona al estado
+  function agregarPersona(nuevaPersona) {
+    const siguienteId = contadorId + 1;
+    setContadorId(siguienteId);
+ 
+    // Se crea un nuevo arreglo con el spread operator, sin mutar el anterior
+    setPersonas([...personas, { id: siguienteId, ...nuevaPersona }]);
+  }
+ 
+  // Funcion que quita una persona del estado, filtrando por id
+  function quitarPersona(idAQuitar) {
+    setPersonas(personas.filter((persona) => persona.id !== idAQuitar));
+  }
+ 
+  return (
+    <React.Fragment>
+      <FormularioPersona onAgregar={agregarPersona} />
+      <TablaPersonas personas={personas} onQuitar={quitarPersona} />
+    </React.Fragment>
+  );
+}
+ 
+// Se monta el componente principal dentro del div#root definido en react.html
+const raiz = ReactDOM.createRoot(document.getElementById("root"));
+raiz.render(<App />);
