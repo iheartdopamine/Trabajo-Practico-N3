@@ -93,3 +93,84 @@ main {
   box-shadow: 0 0 0 2px #f1c40f inset;
   background-color: #fffbe6;
 }
+
+/* Formulario de personas, distribuido tambien con Flexbox */
+.form-personas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cada campo del formulario (label + input) */
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.campo-form label {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.campo-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 140px;
+}
+
+.form-personas button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 38px;
+}
+
+.form-personas button:hover {
+  background-color: #1a252f;
+}
+
+/* Tabla de personas */
+.tabla-personas {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tabla-personas th,
+.tabla-personas td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.tabla-personas thead {
+  background-color: #2c3e50;
+  color: white;
+}
+
+/* Boton para quitar una fila de la tabla */
+.btn-quitar {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-quitar:hover {
+  background-color: #962d22;
+}
