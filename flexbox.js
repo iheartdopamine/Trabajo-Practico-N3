@@ -12,3 +12,29 @@ const lenguajes = [
 
 // Copia del orden original, para poder restablecerlo despues
 const ordenOriginal = [...lenguajes];
+
+const contenedor = document.getElementById("contenedor-tarjetas");
+let resaltarActivo = false; // controla si el modo resaltado esta encendido
+
+function renderizarTarjetas(arreglo) {
+  contenedor.innerHTML = ""; // se limpia lo que había antes
+
+  for (let i = 0; i < arreglo.length; i++) {
+    const item = arreglo[i];
+
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta-flex";
+
+    // Condicional: si el resaltado esta activo y el item es favorito, suma una clase
+    if (resaltarActivo && item.favorito) {
+      tarjeta.classList.add("tarjeta-destacada");
+    }
+
+    tarjeta.innerHTML = `
+      <h3>${item.nombre}</h3>
+      <p>${item.descripcion}</p>
+    `;
+
+    contenedor.appendChild(tarjeta);
+  }
+}
